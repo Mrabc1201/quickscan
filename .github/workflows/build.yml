@@ -5,6 +5,9 @@ on:
   push:
     branches: [main]
 
+permissions:
+  contents: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -18,15 +21,33 @@ jobs:
         with:
           channel: stable
       - name: Prepare project
+        shell: bash
         run: |
-          flutter create --platforms=android --org com.quickscan --project-name quickscan app
+          flutter create --platforms=android --org com.quickscan --project-name quickscan app 2>&1 | tee build.log
           cp pubspec.yaml app/pubspec.yaml
           rm -rf app/lib
           cp -r lib app/lib
           rm -rf app/test
-          python3 ci_patch.py app
+          python3 ci_patch.py app 2>&1 | tee -a build.log
       - name: Build APK
-        run: cd app && flutter pub get && flutter build apk --release
+        shell: bash
+        run: |
+          cd app
+          flutter pub get 2>&1 | tee -a ../build.log
+          flutter build apk --release 2>&1 | tee -a ../build.log
+      - name: Save build log
+        if: always()
+        shell: bash
+        run: |
+          tail -n 300 build.log > /tmp/build_log.txt || echo "no log" > /tmp/build_log.txt
+          git config user.name "build-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git checkout --orphan buildlog
+          git rm -rf . > /dev/null 2>&1 || true
+          cp /tmp/build_log.txt build_log.txt
+          git add build_log.txt
+          git commit -m "build log"
+          git push -f origin buildlog
       - uses: actions/upload-artifact@v4
         with:
           name: quickscan-apk
