@@ -53,7 +53,7 @@ jobs:
         with:
           name: quickscan-apk
           path: app/build/app/outputs/flutter-apk/app-release.apk
-             - uses: softprops/action-gh-release@v2
+      - uses: softprops/action-gh-release@v2
         with:
           tag_name: v1
           files: app/build/app/outputs/flutter-apk/app-release.apk
