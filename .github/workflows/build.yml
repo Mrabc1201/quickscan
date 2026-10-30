@@ -29,6 +29,7 @@ jobs:
           cp -r lib app/lib
           rm -rf app/test
           python3 ci_patch.py app 2>&1 | tee -a build.log
+          python3 fix.py 2>&1 | tee -a build.log
       - name: Build APK
         shell: bash
         run: |
