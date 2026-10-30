@@ -35,7 +35,7 @@ jobs:
         run: |
           cd app
           flutter pub get 2>&1 | tee -a ../build.log
-          flutter build apk --release --target-platform android-arm64 2>&1 | tee -a ../build.log
+          flutter build apk --release --target-platform android-arm,android-arm64 2>&1 | tee -a ../build.log
       - name: Save build log
         if: always()
         shell: bash
