@@ -16,7 +16,7 @@ if "com.google.android.gms.ads.APPLICATION_ID" not in s:
     s = s.replace(
         "</application>",
         '    <meta-data android:name="com.google.android.gms.ads.APPLICATION_ID" '
-        'android:value="ca-app-pub-3940256099942544~3347511713"/>\n    </application>',
+        'android:value="ca-app-pub-6558018507179857~2389976060"/>\n    </application>',
         1,
     )
 s = re.sub(r'android:label="[^"]*"', 'android:label="Quick Scan"', s, count=1)

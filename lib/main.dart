@@ -9,10 +9,10 @@ import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
 import 'package:share_plus/share_plus.dart';
 
-// Abhi Google ki TEST IDs hain. Play Store se pehle asli AdMob IDs lagayein.
+// Asli AdMob IDs (Quick Scan). Apne ads par khud click na karein.
 class Ads {
-  static const bannerId = 'ca-app-pub-3940256099942544/6300978111';
-  static const interstitialId = 'ca-app-pub-3940256099942544/1033173712';
+  static const bannerId = 'ca-app-pub-6558018507179857/7189830426';
+  static const interstitialId = 'ca-app-pub-6558018507179857/6453344153';
 
   static InterstitialAd? _inter;
   static int _saves = 0;
