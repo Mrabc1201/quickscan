@@ -36,25 +36,25 @@ jobs:
           python3 fix.py
           cp -r app app_a
           cp -r app app_b
-          python3 variants.py adsA app_a
-          python3 variants.py adsB app_b
-      - name: Build ads variant A
+          python3 variants.py adsC app_a
+          python3 variants.py adsD app_b
+      - name: Build ads variant C (banner)
         shell: bash
         run: |
           cd app_a
           flutter pub get
           flutter build apk --release --target-platform android-arm,android-arm64
-          cp build/app/outputs/flutter-apk/app-release.apk ../adsA.apk
-      - name: Build ads variant B
+          cp build/app/outputs/flutter-apk/app-release.apk ../scan-test-c.apk
+      - name: Build ads variant D (interstitial)
         shell: bash
         run: |
           cd app_b
           flutter pub get
           flutter build apk --release --target-platform android-arm,android-arm64
-          cp build/app/outputs/flutter-apk/app-release.apk ../adsB.apk
+          cp build/app/outputs/flutter-apk/app-release.apk ../scan-test-d.apk
       - uses: softprops/action-gh-release@v2
         with:
           tag_name: v1
           files: |
-            adsA.apk
-            adsB.apk
+            scan-test-c.apk
+            scan-test-d.apk

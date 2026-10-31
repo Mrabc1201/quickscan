@@ -45,6 +45,32 @@ elif mode == "adsB":
     m = m[:a] + stub + m[b:]
     m = cut(m, "  try {\n    await MobileAds.instance.initialize();\n    Ads.loadInterstitial();\n  } catch (_) {}\n",
             "  Future.delayed(const Duration(seconds: 3), () async {\n    try {\n      await MobileAds.instance.initialize();\n    } catch (_) {}\n  });\n")
+elif mode in ("adsC", "adsD"):
+    init_old = "  try {\n    await MobileAds.instance.initialize();\n    Ads.loadInterstitial();\n  } catch (_) {}\n"
+    if mode == "adsC":
+        # banner only (created 6s after start), no interstitial
+        a = m.index("  @override\n  void initState() {\n    super.initState();\n    _ad = BannerAd(")
+        b = m.index("  @override\n  void dispose() {\n    _ad?.dispose();")
+        new_init = (
+            "  @override\n  void initState() {\n    super.initState();\n"
+            "    Future.delayed(const Duration(seconds: 6), () {\n      if (!mounted) return;\n      try {\n"
+            "        final ad = BannerAd(\n          adUnitId: Ads.bannerId,\n          size: AdSize.banner,\n"
+            "          request: const AdRequest(),\n          listener: BannerAdListener(\n"
+            "            onAdLoaded: (_) {\n              if (mounted) setState(() => _loaded = true);\n            },\n"
+            "            onAdFailedToLoad: (ad, e) => ad.dispose(),\n          ),\n        );\n"
+            "        _ad = ad;\n        ad.load();\n      } catch (_) {}\n    });\n  }\n\n"
+        )
+        m = m[:a] + new_init + m[b:]
+        m = cut(m, init_old, "  Future.delayed(const Duration(seconds: 3), () async {\n    try {\n      await MobileAds.instance.initialize();\n    } catch (_) {}\n  });\n")
+    else:
+        # interstitial only, no banner
+        stub = (
+            "class BannerBox extends StatelessWidget {\n  const BannerBox({super.key});\n"
+            "  @override\n  Widget build(BuildContext context) => const SizedBox.shrink();\n}\n\n"
+        )
+        a, b = m.index("class BannerBox extends StatefulWidget"), m.index("Future<void> main()")
+        m = m[:a] + stub + m[b:]
+        m = cut(m, init_old, "  Future.delayed(const Duration(seconds: 3), () async {\n    try {\n      await MobileAds.instance.initialize();\n      Ads.loadInterstitial();\n    } catch (_) {}\n  });\n")
 else:
     raise SystemExit("bad mode")
 open(mp, "w", encoding="utf-8").write(m)
