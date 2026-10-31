@@ -34,27 +34,27 @@ jobs:
           rm -rf app/test
           python3 ci_patch.py app
           python3 fix.py
-          cp -r app app_noads
-          cp -r app app_noml
-          python3 variants.py noads app_noads
-          python3 variants.py noml app_noml
-      - name: Build no-ads variant
+          cp -r app app_a
+          cp -r app app_b
+          python3 variants.py adsA app_a
+          python3 variants.py adsB app_b
+      - name: Build ads variant A
         shell: bash
         run: |
-          cd app_noads
+          cd app_a
           flutter pub get
           flutter build apk --release --target-platform android-arm,android-arm64
-          cp build/app/outputs/flutter-apk/app-release.apk ../noads.apk
-      - name: Build no-scanner variant
+          cp build/app/outputs/flutter-apk/app-release.apk ../adsA.apk
+      - name: Build ads variant B
         shell: bash
         run: |
-          cd app_noml
+          cd app_b
           flutter pub get
           flutter build apk --release --target-platform android-arm,android-arm64
-          cp build/app/outputs/flutter-apk/app-release.apk ../noml.apk
+          cp build/app/outputs/flutter-apk/app-release.apk ../adsB.apk
       - uses: softprops/action-gh-release@v2
         with:
           tag_name: v1
           files: |
-            noads.apk
-            noml.apk
+            adsA.apk
+            adsB.apk

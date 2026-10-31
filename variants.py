@@ -25,6 +25,26 @@ elif mode == "noml":
     a, b = m.index("  Future<void> _scan() async {"), m.index("  Future<void> _delete(File f)")
     m = m[:a] + "  Future<void> _scan() async {}\n\n" + m[b:]
     p = cut(p, "  google_mlkit_document_scanner: ^0.5.0\n")
+elif mode == "adsA":
+    # ads plugin + manifest present natively, but NO ads code runs
+    stub = (
+        "class Ads {\n  static void loadInterstitial() {}\n  static void maybeShowAfterSave() {}\n}\n\n"
+        "class BannerBox extends StatelessWidget {\n  const BannerBox({super.key});\n"
+        "  @override\n  Widget build(BuildContext context) => const SizedBox.shrink();\n}\n\n"
+    )
+    a, b = m.index("// Abhi Google ki TEST IDs"), m.index("Future<void> main()")
+    m = m[:a] + stub + m[b:]
+    m = cut(m, "  try {\n    await MobileAds.instance.initialize();\n    Ads.loadInterstitial();\n  } catch (_) {}\n")
+elif mode == "adsB":
+    # only MobileAds.initialize() after 3s; no banner, no interstitial
+    stub = (
+        "class BannerBox extends StatelessWidget {\n  const BannerBox({super.key});\n"
+        "  @override\n  Widget build(BuildContext context) => const SizedBox.shrink();\n}\n\n"
+    )
+    a, b = m.index("class BannerBox extends StatefulWidget"), m.index("Future<void> main()")
+    m = m[:a] + stub + m[b:]
+    m = cut(m, "  try {\n    await MobileAds.instance.initialize();\n    Ads.loadInterstitial();\n  } catch (_) {}\n",
+            "  Future.delayed(const Duration(seconds: 3), () async {\n    try {\n      await MobileAds.instance.initialize();\n    } catch (_) {}\n  });\n")
 else:
     raise SystemExit("bad mode")
 open(mp, "w", encoding="utf-8").write(m)
