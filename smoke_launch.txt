@@ -1,0 +1,15 @@
+  bash arg: -p
+  bash arg: com.quickscan.quickscan
+  bash arg: -c
+  bash arg: android.intent.category.LAUNCHER
+  bash arg: 1
+args: [-p, com.quickscan.quickscan, -c, android.intent.category.LAUNCHER, 1]
+ arg: "-p"
+ arg: "com.quickscan.quickscan"
+ arg: "-c"
+ arg: "android.intent.category.LAUNCHER"
+ arg: "1"
+data="com.quickscan.quickscan"
+data="android.intent.category.LAUNCHER"
+Events injected: 1
+## Network stats: elapsed time=64ms (0ms mobile, 0ms wifi, 64ms not connected)

@@ -1,0 +1,150 @@
+10-31 14:17:24.136  2741  3383 W RcsClientLib: java.lang.IllegalArgumentException: Service not registered: aeed@864b6e8
+10-31 14:17:24.136  2741  3383 W RcsClientLib: java.lang.IllegalArgumentException: Service not registered: aeed@a02aba6
+10-31 14:17:24.151  2741  2828 E BugleNetwork: java.lang.IllegalArgumentException: normalizedPhoneNumber is empty
+10-31 14:17:24.157  2741  2828 E BugleNetwork: java.lang.IllegalArgumentException: normalizedPhoneNumber is empty
+10-31 14:17:24.177   919   975 D ModelWriter: java.lang.Exception
+10-31 14:17:24.198  1136  3745 W Auth    : java.io.IOException: Couldn't create ClientAuthInfo
+10-31 14:17:24.216  1136  1465 W Auth    : java.io.IOException: Couldn't create ClientAuthInfo
+10-31 14:17:24.223   496  2683 W BroadcastQueue: Background execution not allowed: receiving Intent { act=android.intent.action.PACKAGE_ADDED dat=package:com.quickscan.quickscan flg=0x4000010 (has extras) } to com.google.android.packageinstaller/com.android.packageinstaller.PackageInstalledReceiver
+10-31 14:17:24.224   496   536 W BroadcastQueue: Background execution not allowed: receiving Intent { act=android.intent.action.PACKAGE_ADDED dat=package:com.quickscan.quickscan flg=0x4000010 (has extras) } to com.google.android.gms/.games.chimera.GamesSystemBroadcastReceiverProxy
+10-31 14:17:24.224   496   536 W BroadcastQueue: Background execution not allowed: receiving Intent { act=android.intent.action.PACKAGE_ADDED dat=package:com.quickscan.quickscan flg=0x4000010 (has extras) } to com.google.android.gms/.gass.chimera.PackageChangeBroadcastReceiver
+10-31 14:17:24.224   496   536 W BroadcastQueue: Background execution not allowed: receiving Intent { act=android.intent.action.PACKAGE_ADDED dat=package:com.quickscan.quickscan flg=0x4000010 (has extras) } to com.google.android.gms/.chimera.GmsIntentOperationService$PersistentTrustedReceiver
+10-31 14:17:24.224   496   536 W BroadcastQueue: Background execution not allowed: receiving Intent { act=android.intent.action.PACKAGE_ADDED dat=package:com.quickscan.quickscan flg=0x4000010 (has extras) } to com.google.android.googlequicksearchbox/com.google.android.apps.gsa.googlequicksearchbox.GelStubAppWatcher
+10-31 14:17:24.224   496   536 W BroadcastQueue: Background execution not allowed: receiving Intent { act=android.intent.action.PACKAGE_ADDED dat=package:com.quickscan.quickscan flg=0x4000010 (has extras) } to com.google.android.ims/.receivers.RcsAutoStartReceiver
+10-31 14:17:24.412  4390  4483 W ConnectionTracker: Exception thrown while unbinding
+10-31 14:17:24.412  4390  4483 W ConnectionTracker: java.lang.IllegalArgumentException: Service not registered: tel@b214ade
+10-31 14:17:24.575  5109  5109 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+10-31 14:17:24.583  5109  5109 I AndroidRuntime: Using default boot image
+10-31 14:17:24.583  5109  5109 I AndroidRuntime: Leaving lock profiling enabled
+10-31 14:17:24.703  1380  4981 I ChromeSync: [Sync,SyncIntentOperation] Handling the intent: Intent { act=android.intent.action.PACKAGE_ADDED dat=package:com.quickscan.quickscan flg=0x4000010 cmp=com.google.android.gms/.chimera.GmsIntentOperationService (has extras) }.
+10-31 14:17:24.714  1380  4981 I ChromeSync: [Persistence,AffiliationManager] One of affiliation or grouping data for android://a8Are7dVGr_O7gMgDJkXCgLBkbML0jz7H095WAyCJOkaluouWm_dqjAGP7ho3eMq-K-uaQPOBSpHoFA6yKg3-g==@com.quickscan.quickscan/ was not found. Marking affiliation data as stale...
+10-31 14:17:24.737  1136  4305 W GCM     : Unexpected forwarded intent: Intent { act=android.intent.action.PACKAGE_ADDED dat=package:com.quickscan.quickscan flg=0x4000010 cmp=com.google.android.gms/.chimera.PersistentIntentOperationService (has extras) }
+10-31 14:17:24.738  1136  4305 W GCM     : Unexpected forwarded intent: Intent { act=android.intent.action.PACKAGE_ADDED dat=package:com.quickscan.quickscan flg=0x4000010 cmp=com.google.android.gms/.chimera.PersistentIntentOperationService (has extras) }
+10-31 14:17:24.792  5109  5109 D AndroidRuntime: Calling main entry com.android.commands.monkey.Monkey
+10-31 14:17:24.793  5109  5109 W Monkey  : args: [-p, com.quickscan.quickscan, -c, android.intent.category.LAUNCHER, 1]
+10-31 14:17:24.793  5109  5109 W Monkey  :  arg: "com.quickscan.quickscan"
+10-31 14:17:24.793  5109  5109 W Monkey  : data="com.quickscan.quickscan"
+10-31 14:17:24.882   496  3580 I ActivityTaskManager: START u0 {act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10200000 cmp=com.quickscan.quickscan/.MainActivity} from uid 2000
+10-31 14:17:24.950   496   537 I ActivityManager: Start proc 5173:com.quickscan.quickscan/u0a167 for pre-top-activity {com.quickscan.quickscan/com.quickscan.quickscan.MainActivity}
+10-31 14:17:24.976  5109  5109 I AndroidRuntime: VM exiting with result code 0.
+10-31 14:17:25.035  5173  5173 I TetheringManager: registerTetheringEventCallback:com.quickscan.quickscan
+10-31 14:17:25.116  5173  5173 E FlutterLoader: java.util.concurrent.ExecutionException: java.lang.UnsatisfiedLinkError: dlopen failed: "/data/data/com.quickscan.quickscan/app_lib/libflutter.so" is for EM_AARCH64 (183) instead of EM_X86_64 (62)
+10-31 14:17:25.116  5173  5173 E FlutterLoader: Caused by: java.lang.UnsatisfiedLinkError: dlopen failed: "/data/data/com.quickscan.quickscan/app_lib/libflutter.so" is for EM_AARCH64 (183) instead of EM_X86_64 (62)
+10-31 14:17:25.116  5173  5173 D AndroidRuntime: Shutting down VM
+10-31 14:17:25.117  5173  5173 E AndroidRuntime: FATAL EXCEPTION: main
+10-31 14:17:25.117  5173  5173 E AndroidRuntime: Process: com.quickscan.quickscan, PID: 5173
+10-31 14:17:25.117  5173  5173 E AndroidRuntime: java.lang.RuntimeException: Unable to start activity ComponentInfo{com.quickscan.quickscan/com.quickscan.quickscan.MainActivity}: java.lang.RuntimeException: java.util.concurrent.ExecutionException: java.lang.UnsatisfiedLinkError: dlopen failed: "/data/data/com.quickscan.quickscan/app_lib/libflutter.so" is for EM_AARCH64 (183) instead of EM_X86_64 (62)
+10-31 14:17:25.117  5173  5173 E AndroidRuntime: 	at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:3449)
+10-31 14:17:25.117  5173  5173 E AndroidRuntime: 	at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:3601)
+10-31 14:17:25.117  5173  5173 E AndroidRuntime: 	at android.app.servertransaction.LaunchActivityItem.execute(LaunchActivityItem.java:85)
+10-31 14:17:25.117  5173  5173 E AndroidRuntime: 	at android.app.servertransaction.TransactionExecutor.executeCallbacks(TransactionExecutor.java:135)
+10-31 14:17:25.117  5173  5173 E AndroidRuntime: 	at android.app.servertransaction.TransactionExecutor.execute(TransactionExecutor.java:95)
+10-31 14:17:25.117  5173  5173 E AndroidRuntime: 	at android.app.ActivityThread$H.handleMessage(ActivityThread.java:2066)
+10-31 14:17:25.117  5173  5173 E AndroidRuntime: 	at android.os.Handler.dispatchMessage(Handler.java:106)
+10-31 14:17:25.117  5173  5173 E AndroidRuntime: 	at android.os.Looper.loop(Looper.java:223)
+10-31 14:17:25.117  5173  5173 E AndroidRuntime: 	at android.app.ActivityThread.main(ActivityThread.java:7656)
+10-31 14:17:25.117  5173  5173 E AndroidRuntime: 	at java.lang.reflect.Method.invoke(Native Method)
+10-31 14:17:25.117  5173  5173 E AndroidRuntime: 	at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:592)
+10-31 14:17:25.117  5173  5173 E AndroidRuntime: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:947)
+10-31 14:17:25.117  5173  5173 E AndroidRuntime: Caused by: java.lang.RuntimeException: java.util.concurrent.ExecutionException: java.lang.UnsatisfiedLinkError: dlopen failed: "/data/data/com.quickscan.quickscan/app_lib/libflutter.so" is for EM_AARCH64 (183) instead of EM_X86_64 (62)
+10-31 14:17:25.117  5173  5173 E AndroidRuntime: 	at io.flutter.embedding.engine.loader.FlutterLoader.ensureInitializationComplete(FlutterLoader.java:532)
+10-31 14:17:25.117  5173  5173 E AndroidRuntime: 	at io.flutter.embedding.engine.loader.FlutterLoader.ensureInitializationComplete(FlutterLoader.java:259)
+10-31 14:17:25.117  5173  5173 E AndroidRuntime: 	at io.flutter.embedding.engine.FlutterEngineGroup.<init>(FlutterEngineGroup.java:63)
+10-31 14:17:25.117  5173  5173 E AndroidRuntime: 	at io.flutter.embedding.android.FlutterActivityAndFragmentDelegate.setUpFlutterEngine(FlutterActivityAndFragmentDelegate.java:339)
+10-31 14:17:25.117  5173  5173 E AndroidRuntime: 	at io.flutter.embedding.android.FlutterActivityAndFragmentDelegate.onAttach(FlutterActivityAndFragmentDelegate.java:199)
+10-31 14:17:25.117  5173  5173 E AndroidRuntime: 	at io.flutter.embedding.android.FlutterActivity.onCreate(FlutterActivity.java:645)
+10-31 14:17:25.117  5173  5173 E AndroidRuntime: 	at android.app.Activity.performCreate(Activity.java:7994)
+10-31 14:17:25.117  5173  5173 E AndroidRuntime: 	at android.app.Activity.performCreate(Activity.java:7978)
+10-31 14:17:25.117  5173  5173 E AndroidRuntime: 	at android.app.Instrumentation.callActivityOnCreate(Instrumentation.java:1309)
+10-31 14:17:25.117  5173  5173 E AndroidRuntime: 	at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:3422)
+10-31 14:17:25.117  5173  5173 E AndroidRuntime: 	... 11 more
+10-31 14:17:25.117  5173  5173 E AndroidRuntime: Caused by: java.util.concurrent.ExecutionException: java.lang.UnsatisfiedLinkError: dlopen failed: "/data/data/com.quickscan.quickscan/app_lib/libflutter.so" is for EM_AARCH64 (183) instead of EM_X86_64 (62)
+10-31 14:17:25.117  5173  5173 E AndroidRuntime: 	at java.util.concurrent.FutureTask.report(FutureTask.java:123)
+10-31 14:17:25.117  5173  5173 E AndroidRuntime: 	at java.util.concurrent.FutureTask.get(FutureTask.java:193)
+10-31 14:17:25.117  5173  5173 E AndroidRuntime: 	at io.flutter.embedding.engine.loader.FlutterLoader.ensureInitializationComplete(FlutterLoader.java:287)
+10-31 14:17:25.117  5173  5173 E AndroidRuntime: 	... 20 more
+10-31 14:17:25.117  5173  5173 E AndroidRuntime: Caused by: java.lang.UnsatisfiedLinkError: dlopen failed: "/data/data/com.quickscan.quickscan/app_lib/libflutter.so" is for EM_AARCH64 (183) instead of EM_X86_64 (62)
+10-31 14:17:25.117  5173  5173 E AndroidRuntime: 	at java.lang.Runtime.load0(Runtime.java:939)
+10-31 14:17:25.117  5173  5173 E AndroidRuntime: 	at java.lang.System.load(System.java:1628)
+10-31 14:17:25.117  5173  5173 E AndroidRuntime: 	at com.getkeepsafe.relinker.SystemLibraryLoader.loadPath(SystemLibraryLoader.java:31)
+10-31 14:17:25.117  5173  5173 E AndroidRuntime: 	at com.getkeepsafe.relinker.ReLinkerInstance.loadLibraryInternal(ReLinkerInstance.java:206)
+10-31 14:17:25.117  5173  5173 E AndroidRuntime: 	at com.getkeepsafe.relinker.ReLinkerInstance.loadLibrary(ReLinkerInstance.java:136)
+10-31 14:17:25.117  5173  5173 E AndroidRuntime: 	at com.getkeepsafe.relinker.ReLinkerInstance.loadLibrary(ReLinkerInstance.java:92)
+10-31 14:17:25.117  5173  5173 E AndroidRuntime: 	at io.flutter.embedding.engine.FlutterJNI.loadLibrary(FlutterJNI.java:148)
+10-31 14:17:25.117  5173  5173 E AndroidRuntime: 	at io.flutter.embedding.engine.loader.FlutterLoader$1.call(FlutterLoader.java:159)
+10-31 14:17:25.117  5173  5173 E AndroidRuntime: 	at io.flutter.embedding.engine.loader.FlutterLoader$1.call(FlutterLoader.java:152)
+10-31 14:17:25.117  5173  5173 E AndroidRuntime: 	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+10-31 14:17:25.117  5173  5173 E AndroidRuntime: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1167)
+10-31 14:17:25.117  5173  5173 E AndroidRuntime: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:641)
+10-31 14:17:25.117  5173  5173 E AndroidRuntime: 	at java.lang.Thread.run(Thread.java:923)
+10-31 14:17:25.121   496  1711 W ActivityTaskManager:   Force finishing activity com.quickscan.quickscan/.MainActivity
+10-31 14:17:25.164  4804  5143 W YouTubeMusic: rff: java.util.concurrent.ExecutionException: qjl: Precondition check failed.
+10-31 14:17:25.164  4804  5143 W YouTubeMusic: Caused by: java.util.concurrent.ExecutionException: qjl: Precondition check failed.
+10-31 14:17:25.317   496  1440 I ActivityManager: Process com.quickscan.quickscan (pid 5173) has died: prcp TOP 
+10-31 14:17:25.620   496   530 W ActivityTaskManager: Activity top resumed state loss timeout for ActivityRecord{4911518 u0 com.quickscan.quickscan/.MainActivity t-1 f}}
+10-31 14:17:25.712   919   975 D ModelWriter: java.lang.Exception
+10-31 14:17:26.345  4804  5143 W YouTubeMusic: rff: java.util.concurrent.ExecutionException: qjl: Precondition check failed.
+10-31 14:17:26.345  4804  5143 W YouTubeMusic: Caused by: java.util.concurrent.ExecutionException: qjl: Precondition check failed.
+10-31 14:17:26.416  4390  4863 W YouTube : abwi: java.util.concurrent.ExecutionException: aacl: Precondition check failed.
+10-31 14:17:26.416  4390  4863 W YouTube : Caused by: java.util.concurrent.ExecutionException: aacl: Precondition check failed.
+10-31 14:17:26.875  4804  4838 W ConnectionTracker: Exception thrown while unbinding
+10-31 14:17:26.875  4804  4838 W ConnectionTracker: java.lang.IllegalArgumentException: Service not registered: lbw@84d996
+10-31 14:17:30.197  4804  5143 W YouTubeMusic: rff: java.util.concurrent.ExecutionException: qjl: Precondition check failed.
+10-31 14:17:30.197  4804  5143 W YouTubeMusic: Caused by: java.util.concurrent.ExecutionException: qjl: Precondition check failed.
+10-31 14:17:33.312  4390  4863 W YouTube : abwi: java.util.concurrent.ExecutionException: aacl: Precondition check failed.
+10-31 14:17:33.312  4390  4863 W YouTube : Caused by: java.util.concurrent.ExecutionException: aacl: Precondition check failed.
+10-31 14:17:35.049   685   685 D AvrcpMediaPlayerList: Name of package changed: com.quickscan.quickscan
+10-31 14:17:35.072  1136  4305 I Fitness : OnPackageChangedOperation got intent: Intent { act=android.intent.action.PACKAGE_CHANGED dat=package:com.quickscan.quickscan flg=0x45000010 cmp=com.google.android.gms/.chimera.PersistentIntentOperationService (has extras) } [CONTEXT service_id=17 ]
+10-31 14:17:35.921  4804  5143 W YouTubeMusic: rff: java.util.concurrent.ExecutionException: qjl: Precondition check failed.
+10-31 14:17:35.921  4804  5143 W YouTubeMusic: Caused by: java.util.concurrent.ExecutionException: qjl: Precondition check failed.
+10-31 14:17:39.289  2741  3703 E ailw    : RuntimeException while executing runnable aioi{aauk@de5ea54} with executor MoreExecutors.directExecutor()
+10-31 14:17:39.289  2741  3703 E ailw    : java.lang.NullPointerException: Attempt to read from field 'java.lang.String aagb.b' on a null object reference
+10-31 14:17:39.290  2741  3703 E ailw    : RuntimeException while executing runnable aioi{aauk@747baf2} with executor MoreExecutors.directExecutor()
+10-31 14:17:39.290  2741  3703 E ailw    : java.lang.NullPointerException: Attempt to read from field 'java.lang.String aagb.b' on a null object reference
+10-31 14:17:39.290  2741  3703 E ailw    : RuntimeException while executing runnable aioi{aauk@7e157c0} with executor MoreExecutors.directExecutor()
+10-31 14:17:39.290  2741  3703 E ailw    : java.lang.NullPointerException: Attempt to read from field 'java.lang.String aagb.b' on a null object reference
+10-31 14:17:39.290  2741  3703 E ailw    : RuntimeException while executing runnable aioi{aauk@592943e} with executor MoreExecutors.directExecutor()
+10-31 14:17:39.290  2741  3703 E ailw    : java.lang.NullPointerException: Attempt to read from field 'java.lang.String aagb.b' on a null object reference
+10-31 14:17:39.291  2741  3703 E ailw    : RuntimeException while executing runnable aioi{aauk@5642fec} with executor MoreExecutors.directExecutor()
+10-31 14:17:39.291  2741  3703 E ailw    : java.lang.NullPointerException: Attempt to read from field 'java.lang.String aagb.b' on a null object reference
+10-31 14:17:39.291  2741  3703 E ailw    : RuntimeException while executing runnable aioi{aauk@a1fb64a} with executor MoreExecutors.directExecutor()
+10-31 14:17:39.291  2741  3703 E ailw    : java.lang.NullPointerException: Attempt to read from field 'java.lang.String aagb.b' on a null object reference
+10-31 14:17:39.291  2741  3703 E ailw    : RuntimeException while executing runnable aioi{aauk@d5a5ed8} with executor MoreExecutors.directExecutor()
+10-31 14:17:39.291  2741  3703 E ailw    : java.lang.NullPointerException: Attempt to read from field 'java.lang.String aagb.b' on a null object reference
+10-31 14:17:39.291  2741  3703 E ailw    : RuntimeException while executing runnable aioi{aauk@faaed16} with executor MoreExecutors.directExecutor()
+10-31 14:17:39.291  2741  3703 E ailw    : java.lang.NullPointerException: Attempt to read from field 'java.lang.String aagb.b' on a null object reference
+10-31 14:17:39.291  2741  3703 E ailw    : RuntimeException while executing runnable aioi{aauk@7829084} with executor MoreExecutors.directExecutor()
+10-31 14:17:39.291  2741  3703 E ailw    : java.lang.NullPointerException: Attempt to read from field 'java.lang.String aagb.b' on a null object reference
+10-31 14:17:39.291  2741  3703 E ailw    : RuntimeException while executing runnable aioi{aauk@ee0c4a2} with executor MoreExecutors.directExecutor()
+10-31 14:17:39.291  2741  3703 E ailw    : java.lang.NullPointerException: Attempt to read from field 'java.lang.String aagb.b' on a null object reference
+10-31 14:17:39.291  2741  3703 E ailw    : RuntimeException while executing runnable aioi{aauk@6da30f0} with executor MoreExecutors.directExecutor()
+10-31 14:17:39.291  2741  3703 E ailw    : java.lang.NullPointerException: Attempt to read from field 'java.lang.String aagb.b' on a null object reference
+10-31 14:17:39.291  2741  3703 E ailw    : RuntimeException while executing runnable aioi{aauk@caa88ee} with executor MoreExecutors.directExecutor()
+10-31 14:17:39.291  2741  3703 E ailw    : java.lang.NullPointerException: Attempt to read from field 'java.lang.String aagb.b' on a null object reference
+10-31 14:17:40.764  2741  2885 E ailw    : RuntimeException while executing runnable aioi{aauk@30292ec} with executor MoreExecutors.directExecutor()
+10-31 14:17:40.764  2741  2885 E ailw    : java.lang.NullPointerException: Attempt to read from field 'java.lang.String aagb.b' on a null object reference
+10-31 14:17:40.764  2741  2885 E ailw    : RuntimeException while executing runnable aioi{aauk@da4514a} with executor MoreExecutors.directExecutor()
+10-31 14:17:40.764  2741  2885 E ailw    : java.lang.NullPointerException: Attempt to read from field 'java.lang.String aagb.b' on a null object reference
+10-31 14:17:40.764  2741  2885 E ailw    : RuntimeException while executing runnable aioi{aauk@9fbf1d8} with executor MoreExecutors.directExecutor()
+10-31 14:17:40.764  2741  2885 E ailw    : java.lang.NullPointerException: Attempt to read from field 'java.lang.String aagb.b' on a null object reference
+10-31 14:17:40.764  2741  2885 E ailw    : RuntimeException while executing runnable aioi{aauk@65e3816} with executor MoreExecutors.directExecutor()
+10-31 14:17:40.764  2741  2885 E ailw    : java.lang.NullPointerException: Attempt to read from field 'java.lang.String aagb.b' on a null object reference
+10-31 14:17:40.764  2741  2885 E ailw    : RuntimeException while executing runnable aioi{aauk@82a5384} with executor MoreExecutors.directExecutor()
+10-31 14:17:40.764  2741  2885 E ailw    : java.lang.NullPointerException: Attempt to read from field 'java.lang.String aagb.b' on a null object reference
+10-31 14:17:40.764  2741  2885 E ailw    : RuntimeException while executing runnable aioi{aauk@4fdbfa2} with executor MoreExecutors.directExecutor()
+10-31 14:17:40.764  2741  2885 E ailw    : java.lang.NullPointerException: Attempt to read from field 'java.lang.String aagb.b' on a null object reference
+10-31 14:17:40.764  2741  2885 E ailw    : RuntimeException while executing runnable aioi{aauk@dbb23f0} with executor MoreExecutors.directExecutor()
+10-31 14:17:40.764  2741  2885 E ailw    : java.lang.NullPointerException: Attempt to read from field 'java.lang.String aagb.b' on a null object reference
+10-31 14:17:40.764  2741  2885 E ailw    : RuntimeException while executing runnable aioi{aauk@71c33ee} with executor MoreExecutors.directExecutor()
+10-31 14:17:40.764  2741  2885 E ailw    : java.lang.NullPointerException: Attempt to read from field 'java.lang.String aagb.b' on a null object reference
+10-31 14:17:40.764  2741  2885 E ailw    : RuntimeException while executing runnable aioi{aauk@e468f1c} with executor MoreExecutors.directExecutor()
+10-31 14:17:40.764  2741  2885 E ailw    : java.lang.NullPointerException: Attempt to read from field 'java.lang.String aagb.b' on a null object reference
+10-31 14:17:40.764  2741  2885 E ailw    : RuntimeException while executing runnable aioi{aauk@89ba0fa} with executor MoreExecutors.directExecutor()
+10-31 14:17:40.764  2741  2885 E ailw    : java.lang.NullPointerException: Attempt to read from field 'java.lang.String aagb.b' on a null object reference
+10-31 14:17:40.765  2741  2885 E ailw    : RuntimeException while executing runnable aioi{aauk@cbb8108} with executor MoreExecutors.directExecutor()
+10-31 14:17:40.765  2741  2885 E ailw    : java.lang.NullPointerException: Attempt to read from field 'java.lang.String aagb.b' on a null object reference
+10-31 14:17:40.765  2741  2885 E ailw    : RuntimeException while executing runnable aioi{aauk@f72d2c6} with executor MoreExecutors.directExecutor()
+10-31 14:17:40.765  2741  2885 E ailw    : java.lang.NullPointerException: Attempt to read from field 'java.lang.String aagb.b' on a null object reference
+10-31 14:17:45.112   496  1660 W ActivityManager: android.os.DeadObjectException
+10-31 14:17:47.100  4390  4863 W YouTube : abwi: java.util.concurrent.ExecutionException: aacl: Precondition check failed.
+10-31 14:17:47.100  4390  4863 W YouTube : Caused by: java.util.concurrent.ExecutionException: aacl: Precondition check failed.
