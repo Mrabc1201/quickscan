@@ -1,0 +1,60 @@
+name: Test variants
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - variants.py
+      - .github/workflows/variants.yml
+
+permissions:
+  contents: write
+
+jobs:
+  variants:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+      - name: Prepare project
+        shell: bash
+        run: |
+          mkdir -p ~/.android
+          cp debug.keystore ~/.android/debug.keystore
+          flutter create --platforms=android --org com.quickscan --project-name quickscan app
+          cp pubspec.yaml app/pubspec.yaml
+          rm -rf app/lib
+          cp -r lib app/lib
+          rm -rf app/test
+          python3 ci_patch.py app
+          python3 fix.py
+          cp -r app app_noads
+          cp -r app app_noml
+          python3 variants.py noads app_noads
+          python3 variants.py noml app_noml
+      - name: Build no-ads variant
+        shell: bash
+        run: |
+          cd app_noads
+          flutter pub get
+          flutter build apk --release --target-platform android-arm,android-arm64
+          cp build/app/outputs/flutter-apk/app-release.apk ../noads.apk
+      - name: Build no-scanner variant
+        shell: bash
+        run: |
+          cd app_noml
+          flutter pub get
+          flutter build apk --release --target-platform android-arm,android-arm64
+          cp build/app/outputs/flutter-apk/app-release.apk ../noml.apk
+      - uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v1
+          files: |
+            noads.apk
+            noml.apk
