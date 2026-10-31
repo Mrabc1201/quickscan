@@ -35,3 +35,14 @@ for g in glob.glob("app/android/app/build.gradle*"):
     open(g, "w", encoding="utf-8").write(s)
 
 print("fix.py done")
+
+# --- crash-safe startup ---
+sub("app/lib/main.dart", [
+    ("  await MobileAds.instance.initialize();\n  Ads.loadInterstitial();\n  runApp(const QuickScanApp());\n",
+     "  runApp(const QuickScanApp());\n  try {\n    await MobileAds.instance.initialize();\n    Ads.loadInterstitial();\n  } catch (_) {}\n"),
+])
+sub("app/android/app/src/main/AndroidManifest.xml", [
+    ("</application>",
+     '    <meta-data android:name="io.flutter.embedding.android.EnableImpeller" android:value="false"/>\n    </application>'),
+])
+print("fix.py extra done")
