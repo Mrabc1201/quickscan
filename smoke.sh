@@ -1,5 +1,5 @@
 #!/bin/bash
-APK=app/build/app/outputs/flutter-apk/app-debug.apk
+APK=app/build/app/outputs/flutter-apk/app-release.apk
 adb install -r "$APK" > smoke_install.txt 2>&1
 adb logcat -c
 adb shell monkey -p com.quickscan.quickscan -c android.intent.category.LAUNCHER 1 > smoke_launch.txt 2>&1
