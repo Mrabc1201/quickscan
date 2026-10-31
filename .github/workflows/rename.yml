@@ -1,0 +1,27 @@
+name: Republish test APKs
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - .github/workflows/rename.yml
+
+permissions:
+  contents: write
+
+jobs:
+  rename:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download existing assets under new names
+        run: |
+          base=https://github.com/Mrabc1201/quickscan/releases/download/v1
+          curl -sSL -o scan-test-b.apk $base/adsB.apk
+          curl -sSL -o scan-test-a.apk $base/adsA.apk
+          ls -la
+      - uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v1
+          files: |
+            scan-test-a.apk
+            scan-test-b.apk
