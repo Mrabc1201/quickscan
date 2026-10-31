@@ -8,3 +8,4 @@ adb logcat -d -t 1500 > smoke_logcat_full.txt 2>&1
 adb shell pidof com.quickscan.quickscan > smoke_pid.txt 2>&1
 adb exec-out screencap -p > smoke_screen.png 2>/dev/null
 exit 0
+# rerun
