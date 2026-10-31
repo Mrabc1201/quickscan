@@ -41,11 +41,6 @@ jobs:
           cd app
           flutter pub get 2>&1 | tee -a ../build.log
           flutter build apk --release --no-shrink --target-platform android-arm,android-arm64 2>&1 | tee -a ../build.log
-      - name: Build fallback debug APK
-        shell: bash
-        run: |
-          cd app
-          flutter build apk --debug --target-platform android-arm64
       - name: Save build log
         if: always()
         shell: bash
@@ -63,9 +58,10 @@ jobs:
         with:
           name: quickscan-apk
           path: app/build/app/outputs/flutter-apk/app-release.apk
+      - name: Name the APK
+        run: cp app/build/app/outputs/flutter-apk/app-release.apk quickscan.apk
       - uses: softprops/action-gh-release@v2
         with:
           tag_name: v1
           files: |
-            app/build/app/outputs/flutter-apk/app-release.apk
-            app/build/app/outputs/flutter-apk/app-debug.apk
+            quickscan.apk

@@ -65,15 +65,24 @@ class _BannerBoxState extends State<BannerBox> {
   @override
   void initState() {
     super.initState();
-    _ad = BannerAd(
-      adUnitId: Ads.bannerId,
-      size: AdSize.banner,
-      request: const AdRequest(),
-      listener: BannerAdListener(
-        onAdLoaded: (_) => setState(() => _loaded = true),
-        onAdFailedToLoad: (ad, e) => ad.dispose(),
-      ),
-    )..load();
+    Future.delayed(const Duration(seconds: 6), () {
+      if (!mounted) return;
+      try {
+        final ad = BannerAd(
+          adUnitId: Ads.bannerId,
+          size: AdSize.banner,
+          request: const AdRequest(),
+          listener: BannerAdListener(
+            onAdLoaded: (_) {
+              if (mounted) setState(() => _loaded = true);
+            },
+            onAdFailedToLoad: (ad, e) => ad.dispose(),
+          ),
+        );
+        _ad = ad;
+        ad.load();
+      } catch (_) {}
+    });
   }
 
   @override
@@ -95,9 +104,13 @@ class _BannerBoxState extends State<BannerBox> {
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await MobileAds.instance.initialize();
-  Ads.loadInterstitial();
   runApp(const QuickScanApp());
+  Future.delayed(const Duration(seconds: 3), () async {
+    try {
+      await MobileAds.instance.initialize();
+      Ads.loadInterstitial();
+    } catch (_) {}
+  });
 }
 
 class QuickScanApp extends StatelessWidget {
