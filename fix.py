@@ -46,3 +46,16 @@ sub("app/android/app/src/main/AndroidManifest.xml", [
      '    <meta-data android:name="io.flutter.embedding.android.EnableImpeller" android:value="false"/>\n    </application>'),
 ])
 print("fix.py extra done")
+
+# --- disable R8 minify/shrink (it strips WorkManager's WorkDatabase -> startup crash) ---
+for g in glob.glob("app/android/app/build.gradle*"):
+    s = open(g, encoding="utf-8").read()
+    if g.endswith(".kts"):
+        ins = "release {\n            isMinifyEnabled = false\n            isShrinkResources = false"
+    else:
+        ins = "release {\n            minifyEnabled false\n            shrinkResources false"
+    s, n = re.subn(r"release\s*\{", ins, s, count=1)
+    if n != 1:
+        raise SystemExit("release block not found in " + g)
+    open(g, "w", encoding="utf-8").write(s)
+print("fix.py minify off done")
