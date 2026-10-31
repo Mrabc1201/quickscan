@@ -30,12 +30,22 @@ jobs:
           rm -rf app/test
           python3 ci_patch.py app 2>&1 | tee -a build.log
           python3 fix.py 2>&1 | tee -a build.log
+      - name: Use fixed signing key
+        shell: bash
+        run: |
+          mkdir -p ~/.android
+          cp debug.keystore ~/.android/debug.keystore
       - name: Build APK
         shell: bash
         run: |
           cd app
           flutter pub get 2>&1 | tee -a ../build.log
           flutter build apk --release --no-shrink --target-platform android-arm,android-arm64 2>&1 | tee -a ../build.log
+      - name: Build fallback debug APK
+        shell: bash
+        run: |
+          cd app
+          flutter build apk --debug --target-platform android-arm64
       - name: Save build log
         if: always()
         shell: bash
@@ -56,4 +66,6 @@ jobs:
       - uses: softprops/action-gh-release@v2
         with:
           tag_name: v1
-          files: app/build/app/outputs/flutter-apk/app-release.apk
+          files: |
+            app/build/app/outputs/flutter-apk/app-release.apk
+            app/build/app/outputs/flutter-apk/app-debug.apk
