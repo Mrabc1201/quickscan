@@ -1,0 +1,36 @@
+name: Hello test APK
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - .github/workflows/hello.yml
+
+permissions:
+  contents: write
+
+jobs:
+  hello:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+      - name: Build plain Flutter app
+        shell: bash
+        run: |
+          mkdir -p ~/.android
+          cp debug.keystore ~/.android/debug.keystore
+          flutter create --platforms=android --org com.hellotest --project-name hello_test hello
+          cd hello
+          flutter build apk --release --target-platform android-arm,android-arm64
+          cp build/app/outputs/flutter-apk/app-release.apk ../hello.apk
+      - uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v1
+          files: hello.apk
