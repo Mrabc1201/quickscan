@@ -1,0 +1,47 @@
+name: Smoke real APK
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - smoke2.sh
+      - .github/workflows/smoke2.yml
+
+permissions:
+  contents: write
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download real release APK
+        run: curl -sSL -o real.apk https://github.com/Mrabc1201/quickscan/releases/download/v1/app-release.apk && ls -la real.apk
+      - name: Enable KVM
+        run: |
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
+      - name: Run on emulator
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 30
+          arch: x86_64
+          target: google_apis
+          script: bash smoke2.sh
+      - name: Save log
+        if: always()
+        shell: bash
+        run: |
+          mkdir -p /tmp/out
+          cp smoke_*.txt smoke_screen.png /tmp/out/ 2>/dev/null || true
+          grep -iE "FATAL|AndroidRuntime|UnsatisfiedLink|quickscan|Exception" smoke_logcat_full.txt | tail -150 > /tmp/out/smoke_filtered.txt || true
+          git config user.name "build-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git checkout --orphan smokelog2
+          git rm -rf . > /dev/null 2>&1 || true
+          git clean -fdxq
+          cp /tmp/out/* . 2>/dev/null || true
+          git add -A
+          git commit -m "smoke2 log"
+          git push -f origin smokelog2
