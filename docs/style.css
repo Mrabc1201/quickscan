@@ -15,3 +15,15 @@ label{display:inline-block;margin:10px 14px 0 0;font-size:14px}input[type=number
 h2{font-size:20px;margin-top:26px}details{background:#fff;border:1px solid #e3e8ef;border-radius:10px;padding:10px 14px;margin-bottom:8px}summary{cursor:pointer;font-weight:600}
 footer{text-align:center;color:#667085;font-size:13px;padding:24px 10px}footer a{color:#667085;margin:0 8px}
 .ad{min-height:90px;margin:16px 0;text-align:center;color:#9aa5b8;font-size:12px}
+
+.bar{display:flex;gap:8px;flex-wrap:wrap}.bar button{margin-top:10px}
+.pg{position:relative;margin:12px auto;border:1px solid #cfd6e0;background:#fff;box-shadow:0 1px 4px rgba(0,0,0,.08)}
+.pg canvas{display:block}
+.it{position:absolute;border:1px dashed transparent;cursor:move;touch-action:none;user-select:none;-webkit-user-select:none}
+.it.sel{border-color:#2f6fed;background:rgba(47,111,237,.06)}
+#sigModal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:50;align-items:center;justify-content:center;padding:12px}
+#sigModal .box{background:#fff;border-radius:14px;padding:16px;width:100%;max-width:420px}
+#sigCanvas,#typePrev{width:100%;border:1px solid #c8d2e2;border-radius:10px;background:#fff;touch-action:none;display:block}
+.tabs button{margin-top:0;background:#e8eefc;color:#2f6fed}.tabs button.on{background:#2f6fed;color:#fff}
+#viewBox{text-align:center}#view{border:1px solid #c8d2e2;border-radius:6px;touch-action:none;cursor:grab;max-width:100%}
+input[type=range]{width:100%}
