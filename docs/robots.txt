@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://mrabc1201.github.io/quickscan/sitemap.xml
