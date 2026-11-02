@@ -23,7 +23,16 @@ async function openFile(f) {
     bytes = new Uint8Array(await f.arrayBuffer());
     $('#info').textContent = 'Loading ' + f.name + ' (' + fmt(f.size) + ') ...';
     const lib = await loadPdfjs();
-    const doc = await lib.getDocument({ data: bytes.slice() }).promise;
+    if (!bytes.length) throw new Error('this file is empty (0 KB). Please download or save it again');
+    const head = new TextDecoder('latin1').decode(bytes.slice(0, 1024));
+    if (head.indexOf('%PDF') < 0) throw new Error('this file is not a PDF (' + (f.type || 'unknown type') + '). Choose a .pdf file');
+    let doc;
+    try { doc = await lib.getDocument({ data: bytes.slice() }).promise; }
+    catch (e1) {
+      const fixed = await (await PDFLib.PDFDocument.load(bytes, { ignoreEncryption: true, throwOnInvalidObject: false })).save();
+      bytes = new Uint8Array(fixed);
+      doc = await lib.getDocument({ data: bytes.slice() }).promise;
+    }
     $('#editor').style.display = 'block';
     const box = $('#pages'); box.innerHTML = ''; items = []; sel = null;
     const cw = Math.max(240, Math.min(box.clientWidth || 360, 820));
@@ -44,7 +53,7 @@ async function openFile(f) {
     $('#info').textContent = f.name + ' (' + fmt(f.size) + ', ' + doc.numPages + ' page' + (doc.numPages > 1 ? 's' : '') + ')';
     $('#out').innerHTML = '';
   } catch (e) {
-    $('#info').textContent = 'Could not open this PDF: ' + e.message + ' (password-protected files are not supported).';
+    $('#info').textContent = 'Could not open this PDF: ' + e.message + (/empty|not a PDF/.test(e.message) ? '.' : '. The file may be damaged, incomplete or password-protected - try downloading it again.');
   }
 }
 

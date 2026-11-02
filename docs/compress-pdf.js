@@ -30,7 +30,12 @@ go.addEventListener('click', async () => {
   try {
     if (fsize <= target) { st.textContent = 'Your file (' + fmt(fsize) + ') is already smaller than ' + fmt(target) + '. Pick a smaller target.'; go.disabled = false; return; }
     const lib = await loadPdfjs();
-    const doc = await lib.getDocument({ data: bytes.slice() }).promise;
+    let doc;
+    try { doc = await lib.getDocument({ data: bytes.slice() }).promise; }
+    catch (e1) {
+      bytes = new Uint8Array(await (await PDFLib.PDFDocument.load(bytes, { ignoreEncryption: true, throwOnInvalidObject: false })).save());
+      doc = await lib.getDocument({ data: bytes.slice() }).promise;
+    }
     const plans = [[1.6, .72], [1.4, .62], [1.2, .52], [1.0, .45], [0.9, .38], [0.8, .32], [0.7, .27], [0.6, .22], [0.5, .18], [0.4, .15]];
     const ratio = target / fsize;
     let start = ratio < 0.04 ? 6 : ratio < 0.08 ? 5 : ratio < 0.15 ? 4 : ratio < 0.3 ? 3 : ratio < 0.5 ? 2 : ratio < 0.7 ? 1 : 0;
