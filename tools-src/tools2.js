@@ -9,7 +9,7 @@ function add(name, blob, label) {
   out.appendChild(d);
 }
 const say = t => { const e = $('#status'); if (e) e.textContent = t || ''; };
-async function loadPdfjs() { if (!pdfjs) { pdfjs = await import('./lib/pdf.min.mjs'); pdfjs.GlobalWorkerOptions.workerSrc = './lib/pdf.worker.min.mjs'; } return pdfjs; }
+async function loadPdfjs() { if (!pdfjs) { pdfjs = await import('./lib/pdf.min.mjs'); pdfjs.GlobalWorkerOptions.workerSrc = new URL('./lib/pdf.worker.min.mjs', import.meta.url).href; } return pdfjs; }
 function parseRange(s, n) {
   const set = new Set();
   for (const part of s.split(',').map(x => x.trim()).filter(Boolean)) {
