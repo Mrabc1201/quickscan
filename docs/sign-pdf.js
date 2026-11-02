@@ -85,7 +85,7 @@ function addItem(kind, data) {
     im.style.cssText = 'width:100%;height:100%;display:block;pointer-events:none';
     el.appendChild(im);
   } else {
-    el.textContent = data.text; el.style.fontSize = '17px'; el.style.color = '#111';
+    el.textContent = data.text; el.style.fontSize = '15px'; el.style.color = color; it.color = color;
     el.style.whiteSpace = 'nowrap'; el.style.fontFamily = 'Helvetica, Arial, sans-serif'; el.style.lineHeight = '1.15';
   }
   wrap.appendChild(el);
@@ -122,7 +122,7 @@ document.addEventListener('pointerdown', e => { if (!e.target.closest('.it') && 
 
 /* signature dialog */
 const sc = $('#sigCanvas'), sx = sc.getContext('2d');
-let drawing = false, color = '#111111', mode = 'draw';
+let drawing = false, color = '#1a3fb0', mode = 'draw';
 function pos(e) { const r = sc.getBoundingClientRect(); return { x: (e.clientX - r.left) * sc.width / r.width, y: (e.clientY - r.top) * sc.height / r.height }; }
 function clearSig() { sx.clearRect(0, 0, sc.width, sc.height); sx.lineWidth = 4; sx.lineCap = 'round'; sx.lineJoin = 'round'; sx.strokeStyle = color; }
 clearSig();
@@ -130,7 +130,11 @@ sc.addEventListener('pointerdown', e => { drawing = true; sc.setPointerCapture(e
 sc.addEventListener('pointermove', e => { if (!drawing) return; const p = pos(e); sx.lineTo(p.x, p.y); sx.stroke(); });
 ['pointerup', 'pointercancel'].forEach(t => sc.addEventListener(t, () => { drawing = false; }));
 $('#sigClear').onclick = clearSig;
-document.querySelectorAll('input[name=col]').forEach(r => r.addEventListener('change', () => { color = r.value; sx.strokeStyle = color; drawType(); }));
+function recolor() {
+  sx.save(); sx.globalCompositeOperation = 'source-atop'; sx.fillStyle = color; sx.fillRect(0, 0, sc.width, sc.height); sx.restore();
+  sx.strokeStyle = color;
+}
+document.querySelectorAll('input[name=col]').forEach(r => r.addEventListener('change', () => { color = r.value; recolor(); drawType(); }));
 function setMode(m) {
   mode = m;
   $('#tabDraw').classList.toggle('on', m === 'draw'); $('#tabType').classList.toggle('on', m === 'type');
@@ -160,7 +164,7 @@ $('#sigDone').onclick = () => {
   const r = trim(mode === 'draw' ? sc : tp);
   if (!r) { alert('Please draw or type your signature first.'); return; }
   sig = r; $('#sigModal').style.display = 'none'; addItem('sig', sig);
-  $('#bSign').textContent = 'Add signature again'; $('#bChange').style.display = 'inline-block';
+  $('#bSign').textContent = 'Add another copy'; $('#bChange').style.display = 'inline-block';
 };
 $('#sigCancel').onclick = () => { $('#sigModal').style.display = 'none'; };
 $('#bSign').onclick = () => { if (sig) addItem('sig', sig); else $('#sigModal').style.display = 'flex'; };
@@ -187,7 +191,7 @@ $('#bSave').onclick = async () => {
       } else {
         const px = parseFloat(it.el.style.fontSize);
         const txt = it.data.text.replace(/[^\x20-\x7E\xA0-\xFF]/g, '?');
-        page.drawText(txt, { x: (left + 2) * f, y: ph - (top + px * 0.95) * f, size: px * f, font, color: rgb(0.07, 0.07, 0.07) });
+        page.drawText(txt, { x: (left + 2) * f, y: ph - (top + px * 0.95) * f, size: px * f, font, color: rgb(parseInt((it.color || '#111111').slice(1, 3), 16) / 255, parseInt((it.color || '#111111').slice(3, 5), 16) / 255, parseInt((it.color || '#111111').slice(5, 7), 16) / 255) });
       }
     }
     const out = await doc.save();

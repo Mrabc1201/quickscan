@@ -27,3 +27,9 @@ footer{text-align:center;color:#667085;font-size:13px;padding:24px 10px}footer a
 .tabs button{margin-top:0;background:#e8eefc;color:#2f6fed}.tabs button.on{background:#2f6fed;color:#fff}
 #viewBox{text-align:center}#view{border:1px solid #c8d2e2;border-radius:6px;touch-action:none;cursor:grab;max-width:100%}
 input[type=range]{width:100%}
+
+.colrow{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:10px;font-weight:600}
+.sw input{position:absolute;opacity:0;pointer-events:none}
+.sw span{display:inline-block;padding:8px 14px;border-radius:20px;border:3px solid transparent;background:var(--c);color:#fff;font-weight:700}
+.sw input:checked+span{border-color:#fff;outline:3px solid var(--c)}
+.sw{position:relative;cursor:pointer}
