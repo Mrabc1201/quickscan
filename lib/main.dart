@@ -9,6 +9,8 @@ import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
 import 'package:share_plus/share_plus.dart';
 
+import 'qr_scanner.dart';
+
 // Asli AdMob IDs (Quick Scan). Apne ads par khud click na karein.
 class Ads {
   static const bannerId = 'ca-app-pub-6558018507179857/7189830426';
@@ -225,7 +227,7 @@ class _HomeScreenState extends State<HomeScreen> {
               child: Padding(
                 padding: EdgeInsets.all(24),
                 child: Text(
-                  'No scans yet.\nTap "Scan" to scan your first document.\nFree, no watermark.',
+                  'No scans yet.\nTap "Scan" to scan a document, or "QR / Barcode" to scan a code.\nFree, no watermark.',
                   textAlign: TextAlign.center,
                   style: TextStyle(fontSize: 16),
                 ),
@@ -259,15 +261,30 @@ class _HomeScreenState extends State<HomeScreen> {
                 );
               },
             ),
-      floatingActionButton: FloatingActionButton.extended(
-        onPressed: _scan,
-        icon: _busy
-            ? const SizedBox(
-                width: 18,
-                height: 18,
-                child: CircularProgressIndicator(strokeWidth: 2))
-            : const Icon(Icons.document_scanner),
-        label: const Text('Scan'),
+      floatingActionButton: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.end,
+        children: [
+          FloatingActionButton.extended(
+            heroTag: 'qr',
+            onPressed: () => Navigator.push(context,
+                MaterialPageRoute(builder: (_) => const QrScannerScreen())),
+            icon: const Icon(Icons.qr_code_scanner),
+            label: const Text('QR / Barcode'),
+          ),
+          const SizedBox(height: 12),
+          FloatingActionButton.extended(
+            heroTag: 'scan',
+            onPressed: _scan,
+            icon: _busy
+                ? const SizedBox(
+                    width: 18,
+                    height: 18,
+                    child: CircularProgressIndicator(strokeWidth: 2))
+                : const Icon(Icons.document_scanner),
+            label: const Text('Scan'),
+          ),
+        ],
       ),
       bottomNavigationBar: const SafeArea(
         child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [BannerBox()]),
